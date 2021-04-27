@@ -102,6 +102,7 @@ function initPaths() {
     tmp.push(invert(tmp[0], 55, 0));
     tmp.push(invert(tmp[0], 55, 55));
     gameBlocks = [{
+        // block A
         "data": [{
             "color": "magenta",
             "path": [
@@ -116,6 +117,7 @@ function initPaths() {
         "offset": [0,0],
         "coords": [[0,0],[1,0],[2,0],[2,1]]
     },{
+        // block B
         "data": [{
             "color": "magenta",
             "path": [
@@ -130,6 +132,7 @@ function initPaths() {
         "offset": [3,0],
         "coords": [[0,0],[1,0],[2,0],[2,1]]
     },{
+        // block C
         "data": [{
             "color": "magenta",
             "path": [
@@ -142,6 +145,7 @@ function initPaths() {
         "offset": [6,0],
         "coords": [[0,0],[0,1],[0,2]]
     },{
+        // block D
         "data": [{
             "color": "magenta",
             "path": [
@@ -154,6 +158,7 @@ function initPaths() {
         "offset": [0,2],
         "coords": [[0,0],[1,0],[2,0]]
     },{
+        // block E
         "data": [{
             "color": "magenta",
             "path": [
@@ -166,6 +171,7 @@ function initPaths() {
         "offset": [3,2],
         "coords": [[0,0],[1,0],[2,0]]
     },{
+        // block F
         "data": [{
             "color": "magenta",
             "path": [
@@ -178,8 +184,9 @@ function initPaths() {
             ]
         }],
         "offset": [0,3],
-        "coords": [[0,0],[1,0],[2,0],[2,1]]
+        "coords": [[2,0],[0,1],[1,1],[2,1]]
     },{
+        // block G
         "data": [{
             "color": "magenta",
             "path": [
@@ -194,6 +201,7 @@ function initPaths() {
         "offset": [3,3],
         "coords": [[0,0],[0,1],[1,1],[2,1]]
     },{
+        // block H
         "data": [{
             "color": "magenta",
             "path": [
