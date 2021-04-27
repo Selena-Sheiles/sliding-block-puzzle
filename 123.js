@@ -41,7 +41,7 @@ function init() {
     ctx = canvas.getContext("2d");
     initPaths();
     draw();
-    document.addEventListener("keyup", updateGameState);
+    document.addEventListener("keydown", updateGameState);
 }
 
 function initPaths() {
