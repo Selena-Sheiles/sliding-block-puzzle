@@ -218,19 +218,19 @@ function initPaths() {
 
 function updateGameState(e) {
     switch (e.key) {
-        case "w":
+        case "w": case "ArrowUp":
             move(0, -1);
             break;
-        case "a":
+        case "a": case "ArrowLeft":
             move(-1, 0);
             break;
-        case "s":
+        case "s": case "ArrowDown":
             move(0, 1);
             break;
-        case "d":
+        case "d": case "ArrowRight":
             move(1, 0);
             break;
-        case "Enter":
+        case "Enter": case " ":
             toggleSelect();
             break;
     }
