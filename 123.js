@@ -23,8 +23,10 @@ function display(json, offset) {
     for (var point of json.path)
         ctx.lineTo(point[0] + offset[0] * TILE_SIZE, 
                    point[1] + offset[1] * TILE_SIZE);
+    ctx.closePath();
     ctx.fillStyle = json.color;
     ctx.fill();
+    ctx.stroke();
 }
 
 function draw() {
