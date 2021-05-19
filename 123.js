@@ -43,7 +43,7 @@ function init() {
     ctx = canvas.getContext("2d");
     initPaths();
     draw();
-    document.addEventListener("keydown", updateGameState);
+    window.addEventListener("keydown", updateGameState);
 }
 
 function initPaths() {
@@ -275,6 +275,7 @@ function move(dx, dy) {
         gameSelector.offset[1] += dy;
         gameBlocks[idx].offset[0] += dx;
         gameBlocks[idx].offset[1] += dy;
+        addActionHistory(idx, dx, dy);
     }
     draw();
 }
@@ -294,3 +295,50 @@ function toggleSelect() {
     }
     draw();
 }
+
+function addActionHistory(idx, dx, dy) {
+    var actionArray = actionHistory.data;
+    actionArray.length = actionHistory.counter;
+    if (actionArray.length > 0) {
+        var lastAction = actionArray[actionArray.length - 1];
+        if (lastAction[0] == idx) {
+            lastAction[1] += dx;
+            lastAction[2] += dy;
+            return;
+        }
+    }
+    actionArray.push([idx, dx, dy]);
+    actionHistory.counter = actionArray.length;
+}
+
+function undo() {
+    var actionArray = actionHistory.data;
+    if (actionHistory.counter == 0)
+        return;
+    actionHistory.counter--;
+    var lastAction = actionArray[actionHistory.counter];
+    var idx = lastAction[0];
+    var  dx = lastAction[1];
+    var  dy = lastAction[2];
+    gameBlocks[idx].offset[0] -= dx;
+    gameBlocks[idx].offset[1] -= dy;
+    draw();
+    document.getElementById("undo").blur();
+}
+
+function redo() {
+    var actionArray = actionHistory.data;
+    if (actionHistory.counter == actionArray.length)
+        return;
+    var lastAction = actionArray[actionHistory.counter];
+    var idx = lastAction[0];
+    var  dx = lastAction[1];
+    var  dy = lastAction[2];
+    gameBlocks[idx].offset[0] += dx;
+    gameBlocks[idx].offset[1] += dy;
+    actionHistory.counter++;
+    draw();
+    this.blur();
+}
+
+var actionHistory = {data: [], counter: 0};
