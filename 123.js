@@ -34,6 +34,7 @@ function draw() {
     for (var block of gameBlocks)
         block.draw();
     gameSelector.draw();
+    displayActionHistory();
 }
 
 function init() {
@@ -339,6 +340,30 @@ function redo() {
     actionHistory.counter++;
     draw();
     this.blur();
+}
+
+function displayActionHistory() {
+    var actionDisplay = document.getElementById("actionHistory");
+    while (actionDisplay.firstChild)
+        actionDisplay.removeChild(actionDisplay.lastChild);
+    var actionArray = actionHistory.data;
+    for (var i = 0; i < actionArray.length; i++) {
+        var [idx, x, y] = actionArray[i];
+        function padNum(x) {
+            if (x >= 0) return "\xa0" + x;
+            return x + "";
+        }
+        var t = document.createTextNode("Move [#" + idx + "]: " + padNum(x) + " " + padNum(y));
+        var p = document.createElement("p");
+        p.appendChild(t);
+        p.style.fontFamily = "monospace";
+        p.style.margin = 0;
+        p.style.padding = 0;
+        if (i >= actionHistory.counter) {
+            p.style.color = "gray";
+        }
+        actionDisplay.appendChild(p);
+    }
 }
 
 var actionHistory = {data: [], counter: 0};

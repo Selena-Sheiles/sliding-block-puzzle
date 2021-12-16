@@ -3,9 +3,15 @@
 </head>
 
 <body onload="init()">
-  <script src="123.js"></script>
-  <canvas id="canvas"></canvas>
-  </br></br>
-  <button id="undo" onClick="undo()">Undo</button>
-  <button id="redo" onClick="redo()">Redo</button>
+  <div style="display:flex;flex-direction:row">
+    <div>
+      <script src="123.js"></script>
+      <canvas id="canvas"></canvas>
+      </br></br>
+      <button id="undo" onClick="undo()">Undo</button>
+      <button id="redo" onClick="redo()">Redo</button>
+    </div>
+    <div id="actionHistory" style="margin-left:10px">
+    </div>
+  </div>
 </body>
