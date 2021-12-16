@@ -339,7 +339,7 @@ function redo() {
     gameBlocks[idx].offset[1] += dy;
     actionHistory.counter++;
     draw();
-    this.blur();
+    document.getElementById("redo").blur();
 }
 
 function displayActionHistory() {
